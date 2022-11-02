@@ -1,0 +1,27 @@
+<%- include("./partials/header") %>
+
+<nav class="navbar bg-light">
+    <a class="navbar-brand mx-4" href="/">Todo App</a>
+    <img src="/images/milogotipoBlackVector.png"style="width:150px;" class="img-fluid img-thumbnail mx-2" alt="logo">
+</nav>
+
+<div class="container mt-5" >
+    <form action="/add/todo" method="POST" class="d-flex">
+        <input type="text" name="todo" placeholder="Enter todo"  class="form-control">
+        <input type="submit" value="Add" class="btn btn-md btn-primary mx-2">
+    </form>
+    <ul class="list-group my-5">
+        <% todo.forEach(todos=>{ %>
+    
+            <li class="list-group-item">
+                <%= todos.todo %>
+                <a href="/delete/todo/<%= todos._id %>" class="btn btn-danger float-end">Delete</a>
+            </li>
+        <% }) %>
+        <% if (!todo.length) { %>
+            <h3>No data.</h3>
+          <% } %>
+    </ul>
+</div>
+
+<%- include("./partials/footer") %>
